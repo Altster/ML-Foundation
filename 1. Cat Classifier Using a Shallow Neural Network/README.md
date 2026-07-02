@@ -8,4 +8,6 @@ The training set contains 209 images, 64 X 64 X 3 in size
 The model, after training, averages 98% accuracy on the training set,
 and varies between 56% - 80% on the test set, averaging to a 72% accuracy
 
+I have attached the cost graph
+
 By - Kushagra Agarwal
