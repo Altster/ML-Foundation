@@ -31,6 +31,7 @@ No. of units:-
 ## Results
 
 Training Accuracy: ~98%
+\
 Test Accuracy: Average 72% (varies between 56% - 80%)
 
 By - Kushagra Agarwal
