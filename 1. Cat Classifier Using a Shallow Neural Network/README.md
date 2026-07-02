@@ -1,7 +1,7 @@
 ## A simple Cat Classifier using a 3-layer neural network
 
 The model is trained on the dataset provided in course-1 of
-the Deep Learning Specialization taught by Andrew Ng\
+the Deep Learning Specialization taught by Andrew Ng
 
 The training set contains 209 images, 64 X 64 X 3 in size
 \
