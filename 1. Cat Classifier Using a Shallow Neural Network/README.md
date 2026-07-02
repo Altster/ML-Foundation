@@ -25,7 +25,7 @@ I have attached the cost graph
 ## Architecture
 
 No. of units:-
-
+\
 12288 → 10 → 6 → 4 → 1
 
 ## Results
