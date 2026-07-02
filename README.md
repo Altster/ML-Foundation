@@ -11,4 +11,4 @@ I aim to learn what 99% of AI learning sources don't teach, how the entire proce
 
 
 
-## The best way to learn, is to do.
+## The best way to learn, is to do
