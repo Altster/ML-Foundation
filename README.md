@@ -6,7 +6,7 @@ This repository contains a collection of Artificial Intelligence and Machine Lea
 
 ## About Me
 
-I'm an 18-year old Computer Science student, currently studying at Manipal Institute of Technology. I am passionate about:
+I'm Kushagra, an 18-year old Computer Science student, currently studying at Manipal Institute of Technology. I am passionate about:
 
 - Artificial Intelligence
 - Deep Learning
