@@ -62,7 +62,7 @@ Training on CPU is possible but slow (~90 min for one 15-epoch run; the 20-trial
 The `DEVICE` variable auto-detects CUDA, so the same code runs unchanged on CPU or GPU.
 
 
-## Important Note on Checkpoints
+## Important Note on Checkpoints (a big flaw in the project)
 
 The sweep runs `train()` 20 times, and every trial saves to the same `CHECKPOINT` path — so the file left on disk after a sweep is whatever the **last** trial produced, not necessarily the best one.
 
