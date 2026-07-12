@@ -1,5 +1,5 @@
 # Cat vs Dog Classifier 🐱🐕
-A CNN built from scratch in PyTorch, tracked with Weights & Biases, tuned with a Bayesian hyperparameter sweep, and benchmarked against a pretrained ResNet-18.
+A CNN built from scratch in PyTorch, tracked with Weights & Biases(link to the statistics below), tuned with a Bayesian hyperparameter sweep, and benchmarked against a pretrained ResNet-18.
 
 
 ## Overview
@@ -7,7 +7,7 @@ A CNN built from scratch in PyTorch, tracked with Weights & Biases, tuned with a
 Three phases building on each other:
 
 1. **Scratch CNN** — a 3-block convolutional network written from the ground up in PyTorch (~9M parameters)
-2. **Experiment tracking** — every run logged to W&B, followed by a 20-trial Bayesian hyperparameter sweep (link to the W&B dashboard available below)
+2. **Experiment tracking** — every run logged to W&B, followed by a 20-trial Bayesian hyperparameter sweep
 3. **Transfer learning** — a frozen pretrained ResNet-18 with a replaced classification head compared head-to-head against the scratch CNN
 
 ## Results
@@ -17,7 +17,7 @@ Three phases building on each other:
 | Scratch CNN | ~9,537,346 | 91.37% | 91.41% |
 | ResNet-18 (frozen) | ~1,026 | 97.35% | 97.69% |
 
-
+I have also uploaded the trained parameters of the two models for the particular architectures
 
 ## Dataset
 
