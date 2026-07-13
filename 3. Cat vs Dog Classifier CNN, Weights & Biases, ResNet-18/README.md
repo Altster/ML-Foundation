@@ -1,38 +1,31 @@
 # Cat vs Dog Classifier 🐱🐕
-A CNN built from scratch in PyTorch, tracked with Weights & Biases, tuned with a Bayesian hyperparameter sweep, and benchmarked against a pretrained ResNet-18.
+A CNN built from scratch in PyTorch, tracked with Weights & Biases(link to the statistics below), tuned with a Bayesian hyperparameter sweep, and benchmarked against a pretrained ResNet-18.
 
----
 
 ## Overview
 
 Three phases building on each other:
 
-1. **Scratch CNN** — a 3-block convolutional network written from the ground up in PyTorch (~4.5M parameters)
+1. **Scratch CNN** — a 3-block convolutional network written from the ground up in PyTorch (~9M parameters)
 2. **Experiment tracking** — every run logged to W&B, followed by a 20-trial Bayesian hyperparameter sweep
-3. **Transfer learning** — a frozen pretrained ResNet-18 with a replaced classification head (~1,026 trainable parameters), compared head-to-head against the scratch CNN
-
-The central lesson: ResNet-18 trains ~4,000× fewer parameters and still wins decisively — because its backbone already knows how to see.
-
----
+3. **Transfer learning** — a frozen pretrained ResNet-18 with a replaced classification head compared head-to-head against the scratch CNN
 
 ## Results
 
 | Model | Trainable params | Val accuracy | Test accuracy |
 |---|---|---|---|
-| Scratch CNN | ~4,483,746 | — | — |
-| ResNet-18 (frozen) | ~1,026 | — | — |
+| Scratch CNN | ~9,537,346 | 91.37% | 91.41% |
+| ResNet-18 (frozen) | ~1,026 | 97.35% | 97.69% |
 
-*Fill in from your final `evaluate_on_test()` output.*
-
----
+I have also uploaded the trained parameters of the two models for the particular architectures
 
 ## Dataset
 
 [`microsoft/cats_vs_dogs`](https://huggingface.co/datasets/microsoft/cats_vs_dogs) from HuggingFace — 23,410 images, downloaded automatically at runtime. No manual download needed.
 
-Split 70 / 10 / 20 into train / validation / test, seeded for reproducibility. The test set is never touched during training or tuning — it's evaluated exactly once at the very end.
+Split 70 / 10 / 20 into train / validation / test.
 
----
+
 
 ## Tech stack
 
@@ -41,19 +34,6 @@ Split 70 / 10 / 20 into train / validation / test, seeded for reproducibility. T
 - **Weights & Biases** — experiment tracking, hyperparameter sweeps, model artifacts
 - **matplotlib** — visualisation
 
----
-
-## Architecture
-
-**Scratch CNN** — 3 blocks, each: `Conv2d → BatchNorm2d → ReLU → Conv2d → BatchNorm2d → ReLU → MaxPool2d`
-
-```
-(3, 64, 64) → (32, 32, 32) → (64, 16, 16) → (128, 8, 8) → flatten → Linear(8192, 512) → Dropout → Linear(512, 2)
-```
-
-**ResNet-18** — pretrained on ImageNet, backbone frozen, final `fc` layer replaced with `nn.Linear(512, 2)`. Input resized to 224×224 with ImageNet normalisation values.
-
----
 
 ## Setup
 
@@ -65,7 +45,7 @@ pip install -r requirements.txt
 
 ### 2. Weights & Biases account
 
-You need a free W&B account — the notebook logs every run, sweep, and model artifact there.
+You need a free W&B account — the notebook logs every run, sweep, parameters, and model artifact there.
 
 1. Sign up at [wandb.ai](https://wandb.ai)
 2. Get your API key from [wandb.ai/authorize](https://wandb.ai/authorize)
@@ -81,25 +61,8 @@ Training on CPU is possible but slow (~90 min for one 15-epoch run; the 20-trial
 
 The `DEVICE` variable auto-detects CUDA, so the same code runs unchanged on CPU or GPU.
 
----
 
-## Running it
-
-Run the notebook cells in order:
-
-| Section | What it does |
-|---|---|
-| 1–4 | Imports, data loading, three-way split, Dataset class, DataLoaders |
-| 5–6 | CNN architecture, training/evaluation functions |
-| 7–8 | W&B logging setup, baseline training run |
-| 9 | 20-trial Bayesian hyperparameter sweep |
-| 10 | Load best checkpoint, predict on your own image |
-| 11 | ResNet-18 transfer learning |
-| 12 | Final test set evaluation — run once |
-
----
-
-## Notes on checkpoints
+## Important Note on Checkpoints (a big flaw in the project)
 
 The sweep runs `train()` 20 times, and every trial saves to the same `CHECKPOINT` path — so the file left on disk after a sweep is whatever the **last** trial produced, not necessarily the best one.
 
@@ -112,24 +75,14 @@ To get the best model:
 
 If running on Colab, the checkpoint lives in temporary storage and is wiped when the session ends. Download it (or pull it from the W&B artifact) before closing.
 
----
 
 ## Predicting on your own images
 
-`predict_your_image(model, image_path)` runs inference on any image file and displays it with the predicted label and confidence.
+`predict_your_image(model, image_path)` runs inference on any image you upload and displays it with the predicted label and confidence.
+On Colab, mount your Drive, upload the image, and add the correct file path to the function
 
-On Colab, mount your Drive and point at a file there:
+If running locally, just use a normal file path.
 
-```python
-from google.colab import drive
-drive.mount("/content/drive")
-
-predict_your_image(best_model, "/content/drive/MyDrive/my-cat.jpeg")
-```
-
-Locally, just use a normal file path.
-
----
 
 ## Concepts covered
 
