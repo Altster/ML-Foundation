@@ -19,6 +19,16 @@ Three phases building on each other:
 
 I have also uploaded the trained parameters of the two models for the particular architectures
 
+
+## Statistics
+### Validation accuracy of Sweep runs
+![Validation Accuracy](statistics/Sweep-validation-accuracies.png)
+
+
+### Hyperparamter importance
+![Hyperparamter importance](statistics/Sweep-feature-importance.png)
+And more available in statistics folder
+
 ## Dataset
 
 [`microsoft/cats_vs_dogs`](https://huggingface.co/datasets/microsoft/cats_vs_dogs) from HuggingFace — 23,410 images, downloaded automatically at runtime. No manual download needed.
