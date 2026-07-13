@@ -19,6 +19,16 @@ Three phases building on each other:
 
 I have also uploaded the trained parameters of the two models for the particular architectures
 
+
+## Statistics
+### Validation accuracy of Sweep runs
+![Validation Accuracy](statistics/Sweep-validation-accuracies.png)
+
+
+### Hyperparamter importance
+![Hyperparamter importance](statistics/Sweep-feature-importance.png)
+And more available in statistics folder
+
 ## Dataset
 
 [`microsoft/cats_vs_dogs`](https://huggingface.co/datasets/microsoft/cats_vs_dogs) from HuggingFace — 23,410 images, downloaded automatically at runtime. No manual download needed.
@@ -61,6 +71,13 @@ Training on CPU is possible but slow (~90 min for one 15-epoch run; the 20-trial
 
 The `DEVICE` variable auto-detects CUDA, so the same code runs unchanged on CPU or GPU.
 
+## Bugs I hit (Like 5% of total)
+
+- get_CNN() was missing a return model statement, so model was silently None and model.parameters() crashed with a confusing AttributeError.
+- The Windows DataLoader crash (DataLoader worker exited unexpectedly) from num_workers=2 in Jupyter, which needed num_workers=0 to fix.
+- Runs landing in an "uncategorized" W&B project because the inner wandb.init() inside train() didn't specify project=.
+- File paths not working as soon as I switched to Colab
+- Not being able to access and save the desired files with ease because of the cpu-gpu situation
 
 ## Important Note on Checkpoints (a big flaw in the project)
 
