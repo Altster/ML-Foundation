@@ -71,6 +71,13 @@ Training on CPU is possible but slow (~90 min for one 15-epoch run; the 20-trial
 
 The `DEVICE` variable auto-detects CUDA, so the same code runs unchanged on CPU or GPU.
 
+## Bugs I hit (Like 5% of total)
+
+- get_CNN() was missing a return model statement, so model was silently None and model.parameters() crashed with a confusing AttributeError.
+- The Windows DataLoader crash (DataLoader worker exited unexpectedly) from num_workers=2 in Jupyter, which needed num_workers=0 to fix.
+- Runs landing in an "uncategorized" W&B project because the inner wandb.init() inside train() didn't specify project=.
+- File paths not working as soon as I switched to Colab
+- Not being able to access and save the desired files with ease because of the cpu-gpu situation
 
 ## Important Note on Checkpoints (a big flaw in the project)
 
