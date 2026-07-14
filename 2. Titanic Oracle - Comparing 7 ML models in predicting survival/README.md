@@ -40,9 +40,6 @@ XGBoost selected for final submission. Hyperparameters tuned with Optuna (50 tri
 | `AgeGroup` | Age | Buckets: child / teen / adult / middle / senior |
 | `Embarked` | Embarked | 2 missing values filled with most frequent port |
 
-Age imputed using median per (Title × Pclass) group before bucketing — more accurate than global median imputation.
-
-
 
 ## Tech stack
 
@@ -51,25 +48,6 @@ Age imputed using median per (Title × Pclass) group before bucketing — more a
 - **Hyperparameter tuning** — Optuna
 - **Explainability** — SHAP
 - **Visualisation** — matplotlib, seaborn
-
-
-
-## Project structure
-
-```
-titanic-oracle/
-├── datasets/
-│   ├── train.csv
-│   └── test.csv
-├── main_code.ipynb         ← full notebook
-├── submissions.csv         ← Kaggle submission
-├── model_CVcomparison.png  ← 7-model comparison chart
-├── shap_importance.png     ← SHAP global feature importance
-├── shap_beeswarm.png       ← SHAP beeswarm plot
-├── shap_passenger.png      ← SHAP single passenger explanation
-└── README.md
-```
-
 
 ## Concepts covered
 
