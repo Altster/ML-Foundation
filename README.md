@@ -24,7 +24,7 @@ Key concepts: the chain rule as backprop, why autograd exists, manual gradient c
 
 The full supervised learning workflow on structured data — EDA, feature engineering, sklearn pipelines, cross-validated model comparison across 7 algorithms, Bayesian hyperparameter tuning with Optuna, and SHAP explainability.
 
-**Result:** 0.758 on the Kaggle leaderboard
+**Result:** 0.758 on the Kaggle leaderboard (vs ~83% cross-validated accuracy — the generalization gap is the main lesson)
 **Stack:** pandas · scikit-learn · XGBoost · Optuna · SHAP · seaborn
 
 Key concepts: data leakage and how pipelines prevent it, stratified k-fold cross-validation, group imputation vs global imputation, why feature engineering beats algorithm selection.
@@ -43,12 +43,12 @@ Three phases building on each other:
 
 **Benchmarked against transfer learning** — a frozen pretrained ResNet-18 with a replaced classification head, compared head-to-head against the scratch CNN in the same dashboard.
 
-| Model | Trainable params | Test accuracy |
-|---|---|---|
-| Scratch CNN | ~9,537,346 | 91.41% |
-| ResNet-18 (frozen) | ~1,026 | 97.69% |
+| Model | Total params | Trainable params | Test accuracy |
+|---|---|---|---|
+| Scratch CNN | ~9,537,346 | ~9,537,346 | 91.41% |
+| ResNet-18 (frozen) | ~11,177,538 | ~1,026 | 97.69% |
 
-The ResNet trains roughly 9,000× fewer parameters and still wins by 6 points — transfer learning in one experiment.
+The ResNet is a slightly larger network overall, but it trains roughly 9,000× fewer parameters and still wins by 6 points — transfer learning in one experiment.
 
 **Stack:** PyTorch · torchvision · Weights & Biases · HuggingFace datasets
 
@@ -67,4 +67,4 @@ Key concepts: `Dataset` / `DataLoader` internals, the 4-step training pattern, `
 
 ---
 
-*Part of an ongoing roadmap building AI projects from the ground up*
+*Projects 1.1–1.3 of an ongoing roadmap building AI projects from the ground up — see the [hub repo](https://github.com/Altster/AI-Projects) for the full roadmap*

@@ -1,7 +1,7 @@
 # Titanic Oracle 🚢
 Predicting Titanic passenger survival using classical machine learning — full pipeline from raw historical data to Kaggle submission.
 
-**Kaggle score: 0.758** &nbsp;·&nbsp; Top ~25% of all submissions
+**Kaggle score: 0.758** &nbsp;·&nbsp; **CV accuracy: 83.5%**
 
 
 
@@ -26,6 +26,12 @@ Trains and compares 7 classical ML algorithms on the Titanic passenger dataset. 
 Baseline (predict all died): 61.6%
 
 XGBoost selected for final submission. Hyperparameters tuned with Optuna (50 trials, TPE sampler).
+
+### The honest result: a generalization gap
+
+Cross-validation said 83.5%. The Kaggle leaderboard said 75.8% — slightly *below* Kaggle's own one-rule baseline (predict that every woman survives and every man dies), which scores about 76.6%.
+
+That gap is the most useful thing this project taught me. With only 891 training rows, a tuned XGBoost plus several engineered features had enough freedom to fit patterns that don't hold on the test passengers. And because the model was picked (and tuned) using the same CV folds, the winning CV score is an optimistic estimate by construction. A simpler model, fewer engineered features, or nested cross-validation would likely close part of the gap.
 
 
 

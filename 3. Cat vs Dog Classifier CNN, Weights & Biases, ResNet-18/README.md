@@ -12,10 +12,10 @@ Three phases building on each other:
 
 ## Results
 
-| Model | Trainable params | Val accuracy | Test accuracy |
-|---|---|---|---|
-| Scratch CNN | ~9,537,346 | 91.37% | 91.41% |
-| ResNet-18 (frozen) | ~1,026 | 97.35% | 97.69% |
+| Model | Total params | Trainable params | Val accuracy | Test accuracy |
+|---|---|---|---|---|
+| Scratch CNN | ~9,537,346 | ~9,537,346 | 91.37% | 91.41% |
+| ResNet-18 (frozen) | ~11,177,538 | ~1,026 | 97.35% | 97.69% |
 
 I have also uploaded the trained parameters of the two models for the particular architectures
 
